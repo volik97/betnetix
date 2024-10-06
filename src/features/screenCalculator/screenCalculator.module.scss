@@ -1,0 +1,39 @@
+.screen_calculator{
+  padding: 16px 24px;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  .calculated_value{
+    margin: 0;
+    width: 100%;
+    text-align: end;
+    overflow-x: scroll;
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 500;
+    color: #787A82;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .calculate_value{
+    margin: 0;
+    width: 100%;
+    text-align: end;
+    overflow-x: scroll;
+    font-size: 48px;
+    line-height: 58.09px;
+    font-weight: 400;
+    color: #F8F8F8;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    span{
+      color: #FF5A1F;
+    }
+  }
+}

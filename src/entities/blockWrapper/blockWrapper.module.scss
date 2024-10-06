@@ -1,0 +1,11 @@
+.block{
+  box-sizing: border-box;
+  max-width: 610px;
+  width: 100%;
+  height: fit-content;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid #2E2E2E;
+  backdrop-filter: blur(24px);
+  color: #fff;
+}
