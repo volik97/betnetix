@@ -115,7 +115,8 @@ export const performCalculation = (prevValue: string, currValue: string, operati
             return prev + current;
         case '-':
             return prev - current;
-        case '×' || '*':
+        case '×':
+        case '*':
             return prev * current;
         case '/':
             return current !== 0 ? prev / current : 'Error';

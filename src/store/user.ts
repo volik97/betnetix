@@ -1,6 +1,7 @@
 import {create} from 'zustand'
+import {IUserState} from "@/types/user";
 
-export const userStore = create((set) => ({
+export const userStore = create<IUserState>((set) => ({
     user: {
         name: undefined
     },

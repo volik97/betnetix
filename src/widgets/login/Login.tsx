@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import styles from '@/widgets/login/login.module.scss'
 import Button from "@/shared/ui/button/Button";
 import Input from "@/shared/ui/input/Input";
@@ -11,11 +11,13 @@ function Login() {
     const [page, setPage] = useState('')
     const [userName, setUserName] = useState('')
     const createUser = userStore((state) => state.createUser)
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if(userName){
             createUser({name: userName})
-            localStorage.setItem('name', userName)
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('name', userName)
+            }
             router.push(`/${page}`)
         }
     }

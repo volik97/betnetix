@@ -5,11 +5,11 @@ const numbers = '0123456789'
 const smallLetters = 'abcdefghijklmnopqrstuvwxyz'
 const specialSymbols =  '%*)?@#$~'
 const allOptions = {
-    0: smallLetters,
-    1: smallLetters.toUpperCase(),
-    2: numbers,
-    3: specialSymbols,
-}
+    smallLetters: smallLetters,
+    upperLetters: smallLetters.toUpperCase(),
+    numbers: numbers,
+    specialSymbols: specialSymbols,
+} as const;
 
 //получаем рандомный символ. symbols - массив символов, repeatSymbols - флаг уникальности
 const getRandomSymbol = (symbols: string[], repeatSymbols: boolean) => {
@@ -28,7 +28,7 @@ export const generatePassword = (options:IOption[], passwordSize: number) => {
     const currentOptions: string[] = []; // инициализируем опции
 
     // добавляем наборы символов на основе опций
-    options.forEach((option) => option.index !== 4 && option.use && currentOptions.push(allOptions[option.index]))
+    options.forEach((option) => option.id !== 'uniqueSymbols' && option.use && currentOptions.push(allOptions[option.id]))
 
     // проверяем длинну, если опции не выбраны возвращаем текст ошибки
     if(currentOptions.length === 0) return {err: "Выберите хотя бы одну опцию!"}

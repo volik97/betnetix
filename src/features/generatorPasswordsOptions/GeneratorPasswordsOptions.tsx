@@ -22,28 +22,27 @@ function GeneratorPasswordsOptions() {
     // Состояние для хранения настроек генерации пароля
     const [settingsData, setSettingsData] = useState<IOption[]>([
         {
-            index: 0,
+            id: 'smallLetters',
             name: "Использовать прописные буквы",
             use: true,
         },
-
         {
-            index: 1,
+            id: 'upperLetters',
             name: "Использовать строчные буквы",
             use: true,
         },
         {
-            index: 2,
+            id: 'numbers',
             name: "Использовать цифры",
             use: true,
         },
         {
-            index: 3,
+            id: 'specialSymbols',
             name: "Использовать символы: %, *, ), ?, @, #, $, ~",
             use: true,
         },
         {
-            index: 4,
+            id: 'uniqueSymbols',
             name: "Избегать повторения символов",
             use: true,
         },
@@ -57,20 +56,23 @@ function GeneratorPasswordsOptions() {
         }
 
         // Получаем индекс чекбокса по его id
-        const checkboxIndex = parseInt(event.target.id);
+        const checkboxIndex = event.target.id;
 
-        let currentSettingsDataElement;
+        let currentSettingsDataElement: IOption | undefined;
         // Поиск соответствующего элемента опций
-        settingsData.findIndex((element) => {
-            if (element.index === checkboxIndex) currentSettingsDataElement = element;
+        settingsData.find((element) => {
+            if (element.id === checkboxIndex) currentSettingsDataElement = element;
         });
-        currentSettingsDataElement.use = !currentSettingsDataElement.use;
-        // Обновляем состояние настроек
-        setSettingsData([
-                ...settingsData.filter((el) => el.index < checkboxIndex),
-                currentSettingsDataElement,
-                ...settingsData.filter((el) => el.index > checkboxIndex),
-        ]);
+        if(currentSettingsDataElement){
+            currentSettingsDataElement.use = !currentSettingsDataElement.use;
+
+            // Обновляем состояние настроек
+            setSettingsData([
+                    ...settingsData.filter((el) => el.id < checkboxIndex),
+                    currentSettingsDataElement,
+                    ...settingsData.filter((el) => el.id > checkboxIndex),
+            ]);
+        }
     }
 
     // Валидация длины
@@ -83,7 +85,7 @@ function GeneratorPasswordsOptions() {
     }, [passwordSize])
 
     // Обработчик генерации пароля
-    const handleGenerate = (options, passwordSize) => {
+    const handleGenerate = (options:IOption[], passwordSize:number) => {
         // Проверка, что хотя бы одна опция выбрана
         const someOptionUse = settingsData.some(option => option.use)
         if(!someOptionUse){
@@ -97,7 +99,7 @@ function GeneratorPasswordsOptions() {
             setError(data.err)
         } else{
             // Если пароль сгенерирован успешно, добавляем его в хранилище
-            appendPassword(data)
+            appendPassword(data as string)
         }
     }
     return (
@@ -118,8 +120,8 @@ function GeneratorPasswordsOptions() {
                 {/* Генерация списка чекбоксов по настройкам */}
                 {settingsData.map((option) =>
                     <Checkbox
-                        id={option.index}
-                        key={option.index}
+                        id={option.id}
+                        key={option.id}
                         label={option.name}
                         use={option.use}
                         onChange={(e) => handleCheckboxChange(e)} // Обработчик для изменения чекбокса

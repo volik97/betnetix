@@ -5,9 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import {userStore} from "@/store/user";
 function Header() {
-    const userName = localStorage.getItem('name')
+
+    let userNameLS;
+    if(typeof window !== 'undefined') userNameLS = localStorage.getItem('name');
+
     const user = userStore((state) => state.user)
-    return ((userName || user.name) &&
+
+    return ((userNameLS || user.name) &&
         <header className={styles.header__container}>
             <div className={styles.header__wrapper}>
                 <Image width="143" height="24" src={'/logo.svg'} alt={'logo'}/>
@@ -17,7 +21,7 @@ function Header() {
                     <Link href={"/password"}>Генератор паролей</Link>
                 </div>
                 <div className={styles.header__user}>
-                    <p>{userName}</p>
+                    <p>{userNameLS}</p>
                     <Image width="32" height="32" src={'/avatar.svg'} alt={'avatar'}/>
                 </div>
             </div>

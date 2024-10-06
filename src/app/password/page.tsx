@@ -6,12 +6,16 @@ import {userStore} from "@/store/user";
 import {useRouter} from "next/navigation";
 function Page() {
     const user = userStore((state) => state.user)
-    const userName = localStorage.getItem('name')
     const router = useRouter();
-    if(!user || !userName){
-        alert('Нужно ввести имя!')
-        return router.push('/')
-    }
+
+    useEffect(() => {
+        const userName = localStorage.getItem('name')
+        if(!user || !userName){
+            alert('Нужно ввести имя!')
+            return router.push('/')
+        }
+    }, [])
+
     return (
         <section className={styles.generatorPasswords}>
             <GeneratorPasswords/>
