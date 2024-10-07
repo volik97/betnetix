@@ -5,7 +5,7 @@ import Button from "@/shared/ui/button/Button";
 import Input from "@/shared/ui/input/Input";
 import {userStore} from "@/store/user";
 import {useRouter} from "next/navigation";
-import BlockWrapper from "@/entities/blockWrapper/BlockWrapper";
+import BlockWrapper from "@/features/blockWrapper/BlockWrapper";
 function Login() {
     const router = useRouter()
     const [page, setPage] = useState('')

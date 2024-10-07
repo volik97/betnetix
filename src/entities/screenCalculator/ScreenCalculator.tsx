@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import styles from '@/features/screenCalculator/screenCalculator.module.scss'
-import {performCalculation, useCalculatorStore} from "@/store/calculator";
+import styles from '@/entities/screenCalculator/screenCalculator.module.scss'
+import { calculatorStore} from "@/store/calculator";
+import {performCalculation} from "@/helpers/performCalculation";
 function ScreenCalculator() {
-    const { previousValue, currentValue, operation, deleteLastDigit, inputDigit, setOperation, calculate, clear, toggleSign, inputDot } = useCalculatorStore();
+    const { previousValue, currentValue, operation, deleteLastDigit, inputDigit, setOperation, calculate, clear, toggleSign, inputDot } = calculatorStore();
 
     // разделяем сотни запятыми
     const formatWithCommas = (number: string) => {

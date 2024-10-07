@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import styles from '@/widgets/calculator/calcuator.module.scss'
-import ScreenCalculator from "@/features/screenCalculator/ScreenCalculator";
-import ButtonsCalculator from "@/features/buttonsCalculator/ButtonsCalculator";
+import ScreenCalculator from "@/entities/screenCalculator/ScreenCalculator";
+import ButtonsCalculator from "@/entities/buttonsCalculator/ButtonsCalculator";
 function Calculator() {
     return (
         <section className={styles.calculator__container}>

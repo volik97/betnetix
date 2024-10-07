@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '@/features/buttonsCalculator/buttonsCalculator.module.scss'
-import {useCalculatorStore} from "@/store/calculator";
+import styles from '@/entities/buttonsCalculator/buttonsCalculator.module.scss'
+import {calculatorStore} from "@/store/calculator";
 function ButtonsCalculator() {
-        const {inputDigit, inputDot, calculatePercentage, toggleSign, clear, setOperation, calculate} = useCalculatorStore()
+        const {inputDigit, inputDot, calculatePercentage, toggleSign, clear, setOperation, calculate} = calculatorStore()
     return (
         <div className={styles.buttons__wrapper}>
             <button className={styles.button__lightGrey} onClick={() => clear()}>C</button>

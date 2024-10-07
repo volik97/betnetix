@@ -1,7 +1,7 @@
 'use client'
 import React, {useEffect, useState} from 'react';
-import BlockWrapper from "@/entities/blockWrapper/BlockWrapper";
-import styles from '@/features/generatorPasswordsOptions/generatorPasswordsOptions.module.scss'
+import BlockWrapper from "@/features/blockWrapper/BlockWrapper";
+import styles from '@/entities/generatorPasswordsOptions/generatorPasswordsOptions.module.scss'
 import Input from "@/shared/ui/input/Input";
 import Checkbox from "@/shared/ui/checkbox/Checkbox";
 import Button from "@/shared/ui/button/Button";

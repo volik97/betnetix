@@ -1,8 +1,8 @@
 'use client'
 import React from 'react';
-import BlockWrapper from "@/entities/blockWrapper/BlockWrapper";
+import BlockWrapper from "@/features/blockWrapper/BlockWrapper";
 import {passwordStore} from "@/store/password";
-import styles from '@/features/passwords/passwords.module.scss'
+import styles from '@/entities/passwords/passwords.module.scss'
 import Image from "next/image";
 function Passwords() {
     const passwords: string[] = passwordStore((state) => state.password)

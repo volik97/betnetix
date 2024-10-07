@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '@/widgets/generatorPasswords/generatorPasswords.module.scss'
-import GeneratorPasswordsOptions from "@/features/generatorPasswordsOptions/GeneratorPasswordsOptions";
-import Passwords from "@/features/passwords/Passwords";
+import GeneratorPasswordsOptions from "@/entities/generatorPasswordsOptions/GeneratorPasswordsOptions";
+import Passwords from "@/entities/passwords/Passwords";
 function GeneratorPasswords() {
     return (
         <div className={styles.generatorPassword__container}>
